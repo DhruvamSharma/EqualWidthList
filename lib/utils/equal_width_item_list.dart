@@ -26,27 +26,27 @@ class _EqualWidthItemListState extends State<EqualWidthItemList> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 42, // Ensure a fixed height to prevent layout issues
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.itemCount,
-        separatorBuilder: (context, index) => const SizedBox(width: 8),
-        itemBuilder: (context, index) {
-          return MeasureSize(
-            onChange: (size) {
-              if (size.width > _maxWidth) {
-                setState(() {
-                  _maxWidth = size.width;
-                });
-              }
-            },
-            child: SizedBox(
-              width: _maxWidth == 0 ? null : _maxWidth,
-              child: widget.itemBuilder(context, index),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: List.generate(widget.itemCount, (index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: MeasureSize(
+              onChange: (size) {
+                if (size.width > _maxWidth) {
+                  setState(() {
+                    _maxWidth = size.width;
+                  });
+                }
+              },
+              child: SizedBox(
+                width: _maxWidth == 0 ? null : _maxWidth,
+                child: widget.itemBuilder(context, index),
+              ),
             ),
           );
-        },
+        }),
       ),
     );
   }
