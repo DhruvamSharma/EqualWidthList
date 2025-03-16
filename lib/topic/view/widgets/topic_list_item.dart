@@ -1,46 +1,25 @@
 // # equal_width_list
-//
+// 
 // Created by: dhruvam
 // Date: 16/03/25
-// Time: 6:53 pm
+// Time: 8:04 pm
 
-import 'package:equal_width_list/counter/cubit/counter_cubit.dart';
+import 'package:equal_width_list/topic/cubit/topic_cubit.dart';
 import 'package:equal_width_list/utils/topics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChipList extends StatelessWidget {
-  const ChipList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: Topics.values
-            .map(
-              (topic) => Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: _ChipListItem(topic: topic),
-              ),
-            )
-            .toList(),
-      ),
-    );
-  }
-}
-
-class _ChipListItem extends StatelessWidget {
-  const _ChipListItem({required this.topic, super.key});
+class TopicListItem extends StatelessWidget {
+  const TopicListItem({required this.topic, super.key});
 
   final Topics topic;
 
   @override
   Widget build(BuildContext context) {
-    final selectedTopic = context.select((CounterCubit cubit) => cubit.state);
+    final selectedTopic = context.select((TopicCubit cubit) => cubit.state);
     return GestureDetector(
       onTap: () {
-        context.read<CounterCubit>().changeTopic(topic);
+        context.read<TopicCubit>().changeTopic(topic);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -81,3 +60,4 @@ class _ChipListItem extends StatelessWidget {
     );
   }
 }
+

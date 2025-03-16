@@ -1,23 +1,25 @@
-import 'package:equal_width_list/counter/counter.dart';
-import 'package:equal_width_list/counter/view/widgets/chip_list.dart';
 import 'package:equal_width_list/l10n/l10n.dart';
+import 'package:equal_width_list/topic/cubit/topic_cubit.dart';
+import 'package:equal_width_list/topic/view/widgets/topic_list_item.dart';
+import 'package:equal_width_list/utils/equal_width_item_list.dart';
+import 'package:equal_width_list/utils/topics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CounterPage extends StatelessWidget {
-  const CounterPage({super.key});
+class TopicsPage extends StatelessWidget {
+  const TopicsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => CounterCubit(),
-      child: const CounterView(),
+      create: (_) => TopicCubit(),
+      child: const TopicView(),
     );
   }
 }
 
-class CounterView extends StatelessWidget {
-  const CounterView({super.key});
+class TopicView extends StatelessWidget {
+  const TopicView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,12 @@ class CounterView extends StatelessWidget {
                 'The iconic London Eye observation wheel provides panoramic views of the South Bank cultural complex, and the entire city.',
               ),
               const SizedBox(height: 20),
-              const ChipList(),
+              EqualWidthItemList(
+                itemCount: Topics.values.length,
+                itemBuilder: (context, index) => TopicListItem(
+                  topic: Topics.values[index],
+                ),
+              ),
               const SizedBox(height: 20),
               Text(
                 'Top Listed',
@@ -84,7 +91,7 @@ class CounterText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final count = context.select((CounterCubit cubit) => cubit.state);
+    final count = context.select((TopicCubit cubit) => cubit.state);
     return Text('$count', style: theme.textTheme.displayLarge);
   }
 }
@@ -107,4 +114,3 @@ class _AvailableListItem extends StatelessWidget {
     );
   }
 }
-

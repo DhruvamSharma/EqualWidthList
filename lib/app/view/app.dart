@@ -1,5 +1,5 @@
-import 'package:equal_width_list/counter/counter.dart';
 import 'package:equal_width_list/l10n/l10n.dart';
+import 'package:equal_width_list/topic/view/topics_page.dart';
 import 'package:equal_width_list/utils/theme.dart';
 import 'package:equal_width_list/utils/util.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class App extends StatelessWidget {
       theme: brightness == Brightness.light ? theme.light() : theme.dark(),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const TopicsPage(),
     );
   }
 }

@@ -1,11 +1,10 @@
-import 'package:bloc_test/bloc_test.dart';
-import 'package:equal_width_list/counter/counter.dart';
+import 'package:equal_width_list/topic/cubit/topic_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('CounterCubit', () {
     test('initial state is 0', () {
-      expect(CounterCubit().state, equals(0));
+      expect(TopicCubit().state, equals(0));
     });
 
     // blocTest<CounterCubit, int>(
