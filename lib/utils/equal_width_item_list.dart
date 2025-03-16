@@ -4,10 +4,9 @@
 // Date: 16/03/25
 // Time: 8:06 pm
 
-import 'package:equal_width_list/utils/measure_size.dart';
 import 'package:flutter/material.dart';
 
-class EqualWidthItemList extends StatefulWidget {
+class EqualWidthItemList extends StatelessWidget {
   const EqualWidthItemList({
     required this.itemCount,
     required this.itemBuilder,
@@ -18,35 +17,23 @@ class EqualWidthItemList extends StatefulWidget {
   final Widget Function(BuildContext context, int index) itemBuilder;
 
   @override
-  State<EqualWidthItemList> createState() => _EqualWidthItemListState();
-}
-
-class _EqualWidthItemListState extends State<EqualWidthItemList> {
-  double _maxWidth = 0;
-
-  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(widget.itemCount, (index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: MeasureSize(
-              onChange: (size) {
-                if (size.width > _maxWidth) {
-                  setState(() {
-                    _maxWidth = size.width;
-                  });
-                }
-              },
-              child: SizedBox(
-                width: _maxWidth == 0 ? null : _maxWidth,
-                child: widget.itemBuilder(context, index),
-              ),
-            ),
-          );
-        }),
+      child: IntrinsicWidth(
+        child: Row(
+          children: List.generate(
+            itemCount,
+            (index) {
+              return Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: itemBuilder(context, index),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
