@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:equal_width_list/utils/topics.dart';
 
-class CounterCubit extends Cubit<int> {
-  CounterCubit() : super(0);
+class CounterCubit extends Cubit<Topics> {
+  CounterCubit() : super(Topics.topListed);
 
-  void increment() => emit(state + 1);
-  void decrement() => emit(state - 1);
+  void changeTopic(Topics topic) => emit(topic);
 }

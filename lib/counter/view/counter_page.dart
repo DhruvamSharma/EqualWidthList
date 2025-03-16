@@ -1,4 +1,5 @@
 import 'package:equal_width_list/counter/counter.dart';
+import 'package:equal_width_list/counter/view/widgets/chip_list.dart';
 import 'package:equal_width_list/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +35,7 @@ class CounterView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -50,6 +51,8 @@ class CounterView extends StatelessWidget {
               const Text(
                 'The iconic London Eye observation wheel provides panoramic views of the South Bank cultural complex, and the entire city.',
               ),
+              const SizedBox(height: 20),
+              const ChipList(),
               const SizedBox(height: 20),
               Text(
                 'Top Listed',
@@ -87,11 +90,21 @@ class CounterText extends StatelessWidget {
 }
 
 class _AvailableListItem extends StatelessWidget {
+  /// Serves as a placeholder for the list item.
+  /// {@tool snippet}
+  ///
+  /// Typical Usage:
+  ///
+  ///  `const _AvailableListItem()`
+  ///
+  /// {@end-tool}
   const _AvailableListItem({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Placeholder(
+      fallbackHeight: 200,
+    );
   }
 }
 

@@ -1,7 +1,7 @@
 import 'package:equal_width_list/counter/counter.dart';
 import 'package:equal_width_list/l10n/l10n.dart';
-import 'package:equal_width_list/theme.dart';
-import 'package:equal_width_list/util.dart';
+import 'package:equal_width_list/utils/theme.dart';
+import 'package:equal_width_list/utils/util.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
