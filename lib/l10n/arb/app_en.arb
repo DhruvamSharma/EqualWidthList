@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "counterAppBarTitle": "Avicii",
+    "@counterAppBarTitle": {
+        "description": "Text shown in the AppBar of the Counter Page"
+    }
+}
