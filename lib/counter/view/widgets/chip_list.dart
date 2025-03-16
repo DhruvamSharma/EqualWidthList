@@ -14,15 +14,18 @@ class ChipList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: Topics.values
-          .map(
-            (topic) => Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: _ChipListItem(topic: topic),
-            ),
-          )
-          .toList(),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: Topics.values
+            .map(
+              (topic) => Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: _ChipListItem(topic: topic),
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }
