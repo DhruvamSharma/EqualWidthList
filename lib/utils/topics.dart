@@ -8,7 +8,7 @@ enum Topics {
   topListed('Top Listed'),
   hot('Hot'),
   tech('Tech'),
-  Lifestyle('Lifestyle'),
+  lifestyle('Lifestyle'),
   recommended('Recommended');
 
   const Topics(this.label);
