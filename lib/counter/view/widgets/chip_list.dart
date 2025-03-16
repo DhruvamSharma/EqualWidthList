@@ -42,28 +42,41 @@ class _ChipListItem extends StatelessWidget {
       onTap: () {
         context.read<CounterCubit>().changeTopic(topic);
       },
-      child: Chip(
-        side: BorderSide(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
           color: selectedTopic == topic
-              ? Theme.of(context).primaryColor
-              : Colors.transparent,
-        ),
-        avatar: Container(
-          height: 20,
-          width: 20,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Theme.of(context).primaryColor,
+              ? Theme.of(context).colorScheme.secondaryContainer
+              : Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.fromBorderSide(
+            BorderSide(
+              color: selectedTopic == topic
+                  ? Theme.of(context).colorScheme.outline
+                  : Theme.of(context).colorScheme.outlineVariant,
             ),
           ),
-          alignment: Alignment.center,
-          child: Text(
-            topic.label[0].toUpperCase(),
-          ),
         ),
-        label: Text(topic.label),
-        backgroundColor: Colors.grey.shade200,
+        child: Row(
+          children: [
+            Container(
+              height: 20,
+              width: 20,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.outline,
+                ),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                topic.label[0].toUpperCase(),
+              ),
+            ),
+            const SizedBox(width: 4),
+            Text(topic.label),
+          ],
+        ),
       ),
     );
   }
